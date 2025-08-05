@@ -2,7 +2,7 @@ import os
 from constants import *
 
 def make_DIR(path):
-    # Collect all file extensions in the directory
+    #----------Collects all file extensions in the directory----------
     items = os.listdir(path)
     needed_folders = set()
 
@@ -29,10 +29,11 @@ def make_DIR(path):
         elif ext != "":
             needed_folders.add("Other")
 
-    # Create only the needed folders
+    #----------Creates the needed folders----------
     for folder in needed_folders:
         folder_path = os.path.join(path, folder)
         if not os.path.exists(folder_path):
             os.mkdir(folder_path)
 
     print("Needed folders were successfully created.")
+
