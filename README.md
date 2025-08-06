@@ -50,14 +50,15 @@ fileorganizer/
 
 - Python 3.x
 - No external dependencies (uses only built-in modules)
+---
+### ✅ Implemented Features
 
-## 🔮 Future Releases
+- **Undo Functionality**: Reverse file organization operations performed in the current session
 
 ### 📋 Planned Improvements
 
 - **GUI Interface**: Add a simple graphical interface for easier use
 - **Custom Categories**: Allow users to define their own file categories and extensions
-- **Undo Feature**: Option to reverse the organization process
 - **Batch Processing**: Organize multiple folders at once
 - **Progress Bar**: Show progress for large directories
 - **Configuration File**: Save user preferences and custom settings
@@ -65,7 +66,6 @@ fileorganizer/
 - **Dry Run Mode**: Preview changes before actually moving files
 - **Logging**: Keep track of what files were moved where
 - **Command Line Arguments**: Skip the input prompt with CLI flags
-
 ## ⚠️ Note
 
 Files without extensions and existing folders in the target directory are left untouched.
