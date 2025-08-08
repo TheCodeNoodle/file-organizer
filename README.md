@@ -1,6 +1,22 @@
 # 📁 FileOrganizer
+<div align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/6acefc26-89b3-4eda-9cae-cbbb8529bd9b" 
+    alt="File Organizer app in light mode" 
+    width="410" 
+    height="529" 
+    style="margin-right: 20px;"
+  />
+  <img 
+    src="https://github.com/user-attachments/assets/c2d2ca8e-b512-4b59-9243-231a72d671cf" 
+    alt="File Organizer app in dark mode" 
+    width="410" 
+    height="529"
+  />
+</div>
 
 A simple Python script that automatically organizes files in a directory by moving them into categorized folders based on their file extensions.
+
 
 ## ✨ Features
 
@@ -13,28 +29,38 @@ A simple Python script that automatically organizes files in a directory by movi
 
 ```
 fileorganizer/
-├── main.py          # Entry point - gets folder path and runs organizer
-├── organizer.py     # Core logic for moving files
+├── main.py          # GUI
+├── organizer.py     # Core logic for moving files, undo changes
 ├── folders.py       # Creates necessary folders
 └── constants.py     # File extension definitions
 ```
 
-## 🚀 How to Use
+## 🚀 How to Run
 
-1. Run the script:
-   ```bash
-   python main.py
-   ```
+### 1. Requirements
 
-2. When prompted, enter the path to the folder you want to organize:
-   ```
-   Folder to Organize: /path/to/your/messy/folder
-   ```
+- **Python 3.8+** (Recommended: 3.10 or higher)
+- Works on **Windows** (Dark/Light mode detection is Windows-specific; app still runs on other platforms but with default theme)
 
-3. The script will:
-   - Create necessary folders based on file types found
-   - Move files into appropriate categories
-   - Display confirmation messages
+**Required Python Modules:**
+- `customtkinter`
+- `tkinter` (usually comes pre-installed with Python)
+- `platform` (built-in)
+- `shutil` (built-in)
+- `json` (built-in)
+- `os` (built-in)
+- `winreg` (built-in, Windows only)
+
+
+### 2. Install Dependencies
+
+```bash
+pip install customtkinter
+```
+### 3. Run the App
+```bash
+python main.py
+```
 
 ## 📁 Supported File Types
 
@@ -46,26 +72,31 @@ fileorganizer/
 - **🎵 Music**: .mp3, .wav, .flac, .aac, .ogg, etc.
 - **📦 Other**: Any other file types not listed above
 
-## ⚙️ Requirements
-
-- Python 3.x
-- No external dependencies (uses only built-in modules)
 ---
 ### ✅ Implemented Features
 
-- **Undo Functionality**: Reverse file organization operations performed in the current session
+- **Graphical Interface (GUI)**: Full-featured desktop app built with CustomTkinter
+- **Dark/Light Mode Support**: Automatically detects Windows theme and adapts colors
+- **Persistent Undo Functionality**: Reverse file organization actions even after restarting, using a changelog file
+- **Automatic Folder Creation**: Creates only the folders needed based on files present
+- **Duplicate Handling**: Prevents overwriting by appending numbers (e.g., file(1).txt)
+- **Wide Extension Support**: Organizes files into Programs, Documents, Zip, Videos, Pictures, Music, and Other
+- **Real-Time Feedback**: Status messages displayed directly in the GUI
+- **Safe Operations**: Skips important files like the changelog and existing folders
+
+---
 
 ### 📋 Planned Improvements
 
-- **GUI Interface**: Add a simple graphical interface for easier use
 - **Custom Categories**: Allow users to define their own file categories and extensions
 - **Batch Processing**: Organize multiple folders at once
 - **Progress Bar**: Show progress for large directories
 - **Configuration File**: Save user preferences and custom settings
 - **Nested Organization**: Sub-categorize files (e.g., separate image formats, document types)
 - **Dry Run Mode**: Preview changes before actually moving files
-- **Logging**: Keep track of what files were moved where
-- **Command Line Arguments**: Skip the input prompt with CLI flags
+- **Logging**: Keep a permanent record of moved files
+- **Command Line Arguments**: Optional CLI flags for automation
+- **Cross-Platform Theming**: Extend dark/light mode detection to macOS and Linux
 ## ⚠️ Note
 
 Files without extensions and existing folders in the target directory are left untouched.
