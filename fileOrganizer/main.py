@@ -20,25 +20,26 @@ style = {}
 # ----------- Window Style -----------
 if is_dark_mode() == 0:
     style = {
-        "bg_color": "#121417",            
-        "header": "#E1E4F2",            
-        "container_header": "#4E5C8A",   
-        "small_txt": "#AEB6CF",
-        "container": "#4E5C8A",
-        "container_select": "#B87F1A",
-        "container_txt": "#E1E4F2",
-        "btns": "#2C2F3A",
-        "btns_txt": "#E1E4F2", 
-        "btns_hover": "#3B4162",        
-        "btns_disabled": "#555A6E",     
-        "btns_txt_disabled": "#8A8E9F", 
-        "organize_button": "#3BA74E",    
-        "organize_button_hover": "#2E7030", 
-        "organize_button_disabled": "#5B8F6B", 
-        "undo_button": "#B74141",       
-        "undo_button_hover": "#7F2A2A",  
-        "undo_button_disabled": "#885353", 
-        "disabled_txt": "#8A8E9F"
+        "bg_color": "#121417",             # Very dark background instead of white
+        "header": "#E1E4F2",              # Light off-white for header text
+        "container_header": "#4E5C8A",    # Muted dark blue instead of light periwinkle
+        "small_txt": "#AEB6CF",           # Soft gray-blue for small text
+        "container": "#4E5C8A",           # Same as container_header for consistency
+        "container_select": "#B87F1A",    # Dark gold to replace bright yellow-orange
+        "container_txt": "#E1E4F2",       # Light text in containers
+        "btns": "#2C2F3A",                # Dark gray buttons base color
+        "btns_txt": "#E1E4F2",            # Light text on buttons
+        "btns_hover": "#3B4162",          # Slightly lighter blue hover effect
+        "btns_disabled": "#555A6E",       # Disabled button background (dark muted gray)
+        "btns_txt_disabled": "#8A8E9F",   # Disabled button text (muted gray)
+        "organize_button": "#3BA74E",     # Strong green, a bit lighter for contrast
+        "organize_button_hover": "#2E7030", # Same dark green hover
+        "organize_button_disabled": "#5B8F6B",  # Disabled organize button (muted green)
+        "undo_button": "#B74141",         # Dark red, softer than bright red
+        "undo_button_hover": "#7F2A2A",    # Darker red hover
+        "undo_button_disabled": "#885353",  # Disabled undo button (muted red)
+        "disabled_txt": "#8A8E9F",
+        "action_buttons__txt": "#FFFFFF",
     }
 elif is_dark_mode() == 1:
     style = {
@@ -52,14 +53,15 @@ elif is_dark_mode() == 1:
         "btns": "#ffffff",
         "btns_txt": "#000000",
         "btns_hover": "#E3E6F5",
-        "btns_disabled": "#CFCFD1",        
-        "btns_txt_disabled": "#8A8A8E",     
+        "btns_disabled": "#FFFFFF",           # Light gray disabled buttons background
+        "btns_txt_disabled": "#8A8A8E",       # Muted gray text for disabled buttons
         "organize_button": "#388E3C",
         "organize_button_hover": "#2E7030",
-        "organize_button_disabled": "#90B78A", 
+        "organize_button_disabled": "#90B78A",  # Light muted green for disabled
+        "action_buttons__txt": "#FFFFFF",
         "undo_button": "#C62828",
         "undo_button_hover": "#9B2020",
-        "undo_button_disabled": "#B07878",    
+        "undo_button_disabled": "#B07878",      # Light muted red for disabled
         "disabled_txt": "#8A8A8E"
     }
 else:
@@ -96,11 +98,11 @@ def choose_folder():
             display_path = folder
         file_path_label.configure(text=f"{display_path}")
         state["path"] = folder
-        organizeBtn.configure(state="normal", fg_color= style["organize_button"], text_color=style["btns_txt"])
+        organizeBtn.configure(state="normal", fg_color= style["organize_button"], text_color=style["action_buttons__txt"])
         openFileLocation.configure(state="normal", fg_color = style["btns"], text_color = style["btns_txt"])
         changelog_path = os.path.join(folder, "changelog.json")
         if os.path.exists(changelog_path):
-            undoBtn.configure(state="normal", fg_color=style["undo_button"], text_color=style["btns_txt"])
+            undoBtn.configure(state="normal", fg_color=style["undo_button"], text_color=style["action_buttons__txt"])
         else:
             undoBtn.configure(state="disabled", fg_color=style["undo_button_disabled"], text_color = style["btns_txt_disabled"])
 
@@ -116,7 +118,7 @@ def organize_folder():
     
     make_DIR(path)
     move_files(path, state["action"])
-    undoBtn.configure(state="normal", fg_color=style["undo_button"], text_color=style["btns_txt"])
+    undoBtn.configure(state="normal", fg_color=style["undo_button"], text_color=style["action_buttons__txt"])
     status_label.configure(text="✅ Folder was successfully organized!", text_color="#2ecc71")
 
 def undo_folder():
@@ -140,7 +142,7 @@ def undo_folder():
         print(f"Undo error: {e}")
 
     undo(path, changes)
-    os.remove(changelog_path)  #Deletes changelog after undo
+    os.remove(changelog_path)  #Removes changelog after undo
     state["action"].clear()
     undoBtn.configure(state="disabled", fg_color=style["undo_button_disabled"], text_color = style["btns_txt_disabled"])
     status_label.configure(text="↩️ Changes were successfully undone!", text_color="#3498db")
