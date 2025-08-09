@@ -40,7 +40,9 @@ def get_style_for_mode(dark_mode: bool):
             "undo_button_disabled": "#885353",
             "disabled_txt": "#8A8E9F",
             "action_buttons__txt": "#FFFFFF",
+            "icon": "dark-mode-icon.ico"
         }
+    
     else:
         return {
             "bg_color": "#ffffff",
@@ -63,22 +65,28 @@ def get_style_for_mode(dark_mode: bool):
             "undo_button_hover": "#9B2020",
             "undo_button_disabled": "#B07878",
             "disabled_txt": "#8A8A8E",
+            "icon": "light-mode-icon.ico"
         }
-
 # Main detection & style assignment
 current_platform = platform.system()
+script_dir = os.path.dirname(os.path.abspath(__file__))
 
 if current_platform == "Windows":
     dark_mode = is_dark_mode_windows()
     if dark_mode is None:
-        # Fallback: use CTK appearance mode detection if registry key not found
+        # Fallback if registry key not found
         ctk_mode = ctk.get_appearance_mode()
         dark_mode = (ctk_mode == "dark")
 else:
-    # For non Windows
     ctk_mode = ctk.get_appearance_mode()
-    dark_mode = (ctk_mode == "dark") # just rely on CTK appearance mode (dark or light)
+    dark_mode = (ctk_mode == "dark")
 
+style = get_style_for_mode(dark_mode)
+
+if current_platform == "Windows":
+    icon_path = os.path.join(script_dir, style["icon"])
+else:
+    icon_path = os.path.join(script_dir, "default.ico")
 style = get_style_for_mode(dark_mode)
 
 # Optionally set CTK appearance mode explicitly (keeps CTK widgets consistent)
@@ -100,6 +108,9 @@ root.geometry(f"{geo['width']}x{geo['height']}")
 root.minsize(geo['width'], geo['height'])
 root.maxsize(geo['width'], geo['height'])
 root.title("File Organizer")
+
+
+root.iconbitmap(icon_path)
 root.configure(fg_color = style["bg_color"])
 file_path_label = None
 
