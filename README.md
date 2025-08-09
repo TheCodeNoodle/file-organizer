@@ -54,9 +54,8 @@ fileorganizer/
 
 ### 2. Install Dependencies
 
-```bash
-pip install customtkinter
-```
+- Run <a href="https://github.com/TheCodeNoodle/file-organizer/blob/main/install_requirements.bat">install_requirements.bat</a>
+
 ### 3. Run the App
 ```bash
 python main.py
