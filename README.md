@@ -35,31 +35,69 @@ fileorganizer/
 └── constants.py     # File extension definitions
 ```
 
-## 🚀 How to Run
+## 🚀 Getting Started
 
-### 1. Requirements
+### 📋 Requirements
 
-- **Python 3.8+** (Recommended: 3.10 or higher)
-- Works on **Windows** (Dark/Light mode detection is Windows-specific; app still runs on other platforms but with default theme)
+**System Requirements:**
+- **Python 3.8+** (Python 3.10+ recommended)
+- **Cross-platform compatibility** (Windows, macOS, Linux)
 
-**Required Python Modules:**
-- `customtkinter`
-- `tkinter` (usually comes pre-installed with Python)
-- `platform` (built-in)
-- `shutil` (built-in)
-- `json` (built-in)
-- `os` (built-in)
-- `winreg` (built-in, Windows only)
+> **Note:** Dark/Light mode detection is Windows-specific. The app runs on all platforms but uses the default theme on non-Windows systems.
 
+**Dependencies:**
+- `customtkinter` - Modern UI framework
+- `tkinter` - GUI toolkit (pre-installed with Python)
+- Built-in modules: `platform`, `shutil`, `json`, `os`, `winreg` (Windows only)
 
-### 2. Install Dependencies
+---
 
-- Run <a href="https://github.com/TheCodeNoodle/file-organizer/blob/main/install_requirements.bat">install_requirements.bat</a>
+### 📦 Installation
 
-### 3. Run the App
+#### Windows
+Simply run the automated installer:
+```batch
+install_requirements.bat
+```
+
+#### Linux/macOS
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/TheCodeNoodle/file-organizer.git
+   ```
+
+2. **Navigate to the project directory:**
+   ```bash
+   cd file-organizer
+   ```
+
+3. **Make the install script executable:**
+   ```bash
+   chmod +x install_requirements.sh
+   ```
+
+4. **Run the installer:**
+   ```bash
+   ./install_requirements.sh
+   ```
+
+#### Manual Installation (All Platforms)
+If you prefer to install dependencies manually:
+```bash
+pip install customtkinter
+```
+
+---
+
+### 🎯 Running the Application
+
+Once dependencies are installed, launch the file organizer:
+
 ```bash
 python main.py
 ```
+
+**That's it!** The application will start with your system's theme (dark/light mode on Windows).
 
 ## 📁 Supported File Types
 
