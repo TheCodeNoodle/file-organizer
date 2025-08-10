@@ -6,6 +6,16 @@ from folders import make_DIR
 import platform
 import json
 import winreg
+import sys
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 
 def is_dark_mode_windows():
     # Check the theme via reg
@@ -84,7 +94,7 @@ else:
 style = get_style_for_mode(dark_mode)
 
 if current_platform == "Windows":
-    icon_path = os.path.join(script_dir, style["icon"])
+    icon_path = resource_path(style["icon"])
 else:
     icon_path = os.path.join(script_dir, "default.ico")
 style = get_style_for_mode(dark_mode)
