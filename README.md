@@ -55,10 +55,11 @@ fileorganizer/
 ### 📦 Installation
 
 #### Windows
-Simply run the automated installer:
+- Simply run the automated installer:
 ```batch
 install_requirements.bat
 ```
+- Or you can just download the .exe file <a href="https://github.com/TheCodeNoodle/file-organizer/releases/tag/v0.3.0">from here</a>.
 
 #### Linux/macOS
 1. **Clone the repository:**
